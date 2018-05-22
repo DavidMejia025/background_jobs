@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Delay Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @delay_tasks.each do |delay_task| %>
+      <tr>
+        <td><%= link_to 'Show', delay_task %></td>
+        <td><%= link_to 'Edit', edit_delay_task_path(delay_task) %></td>
+        <td><%= link_to 'Destroy', delay_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Delay Task', new_delay_task_path %>

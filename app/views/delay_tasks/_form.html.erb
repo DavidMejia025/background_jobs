@@ -1,0 +1,17 @@
+<%= form_with(model: delay_task, local: true) do |form| %>
+  <% if delay_task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(delay_task.errors.count, "error") %> prohibited this delay_task from being saved:</h2>
+
+      <ul>
+      <% delay_task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
