@@ -1,8 +1,12 @@
 class DelayTask < ApplicationRecord
-  def informe
-    sleep(19)
+  def self.inform(id)
+    DelayTask.find(id).inform
+  end
+  def self.informe
+    puts ".................................."
+    puts " Start task"
+    sleep(10)
     puts " ................................. "
-    puts " The task ends here " 
-    redirect_to edit_path
+    puts " The task ends here "
   end
 end

@@ -10,12 +10,14 @@ class DelayTasksController < ApplicationController
   # GET /delay_tasks/1
   # GET /delay_tasks/1.json
   def show
+    @delay_task  = DelayTask.find(params[:id])
   end
 
   # GET /delay_tasks/new
   def new
     @delay_task = DelayTask.new
-    @delay_task.informe.delay
+  DelayTask.delay(queue: "delaytask",priority:20,run_at: 10.from_now).informe(4)
+   flash[:notice] = "doing the background job."
   end
 
   # GET /delay_tasks/1/edit
@@ -25,7 +27,8 @@ class DelayTasksController < ApplicationController
   # POST /delay_tasks
   # POST /delay_tasks.json
   def create
-    @delay_task = DelayTask.new(delay_task_params)
+    @delay_task = DelayTask.create(id: params[:id])
+
 
     respond_to do |format|
       if @delay_task.save
